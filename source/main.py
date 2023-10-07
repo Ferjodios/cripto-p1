@@ -1,16 +1,37 @@
 import tkinter as tk
+from main_window import MainWindow
+from login import Login
+from signin import SignIn
 
 def main():
-    root = tk.Tk()
-    root.title("EL gei de David")
-    label = tk.Label(root, text="¡Hola, Tkinter!")
-    label.pack()
-    root.geometry("500x500")
-    def mostrar_mensaje():
-        label.config(text="¡Hola desde el botón!")
+    '''
+    main_window = tk.Tk()
+    main_window.title("Untitled game uwu")
+    LabelTitle = tk.Label(main_window, text="Untitled game uwu")
+    LabelTitle.pack()
+    main_window.geometry("500x500")
 
-    button = tk.Button(root, text="Haz clic", command=mostrar_mensaje)
-    button.pack()
+    SignInButton = tk.Button(main_window, text="Resgistrarse", command=lambda: SignIn(main_window))
+    SignInButton.pack()
+
+    LogInButton = tk.Button(main_window, text="Iniciar sesión", command=lambda: LogIn(main_window))
+    LogInButton.pack()
+
+    main_window.mainloop()'''
+
+    root = tk.Tk()
+    root.title("Untitled game uwu")
+    root.geometry("500x500")
+
+    def abrir_ventana_login():
+        main_window.destroy()
+        login_window = Login(root, volver_a_main)
+
+    def volver_a_main():
+        login_window.destroy()
+        main_window.show()
+
+    main_window = MainWindow(root, abrir_ventana_login)
     root.mainloop()
     
 main()

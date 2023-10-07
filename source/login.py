@@ -1,19 +1,21 @@
 import tkinter as tk
 
-class Login:
-
-    def __init__(self, root, volver_a_main):
-        self.root = root
-        self.volver_a_main = volver_a_main
+class Login(tk.Toplevel):
+    def __init__(self, parent):
+        parent.destroy()
+        self.title("Login")
         
-        self.frame = tk.Frame(root)
-        self.frame.pack(fill=tk.BOTH, expand=True)
+        # Widgets
+        tk.Label(self, text="Username:").grid(row=0, column=0)
+        self.username_entry = tk.Entry(self)
+        self.username_entry.grid(row=0, column=1)
         
-        self.label = tk.Label(self.frame, text="Ventana de Login")
-        self.label.pack(pady=20)
+        tk.Label(self, text="Password:").grid(row=1, column=0)
+        self.password_entry = tk.Entry(self, show="*")
+        self.password_entry.grid(row=1, column=1)
         
-        self.btn_volver = tk.Button(self.frame, text="Volver a Main", command=self.volver_a_main)
-        self.btn_volver.pack(pady=10)
-
-    def prueba():
-        pass
+        tk.Button(self, text="Login", command=self.login).grid(row=2, column=0, columnspan=2)
+        
+    def login(self):
+        # TODO: Add logic to validate credentials
+        self.destroy()

@@ -4,26 +4,17 @@ from login import Login
 from signin import SignIn
 
 def main():
-    '''
-    main_window = tk.Tk()
-    main_window.title("Untitled game uwu")
-    LabelTitle = tk.Label(main_window, text="Untitled game uwu")
-    LabelTitle.pack()
-    main_window.geometry("500x500")
-
-    SignInButton = tk.Button(main_window, text="Resgistrarse", command=lambda: SignIn(main_window))
-    SignInButton.pack()
-
-    LogInButton = tk.Button(main_window, text="Iniciar sesión", command=lambda: LogIn(main_window))
-    LogInButton.pack()
-
-    main_window.mainloop()'''
-
+    """Funcion main del programa"""
     root = tk.Tk()
     root.title("Untitled game uwu")
     root.geometry("500x500")
+    signin_button = tk.Button(root, text = "Registrarte", command=lambda: SignIn(root), height = 5, width = 20 , bg="#1FA463")
+    signin_button.place(x=75 , y=175)
 
-    def abrir_ventana_login():
+    login_button = tk.Button(root, text="Iniciar Sesión", command=lambda: Login(root), height = 5, width = 20, bg="#1FA463")
+    login_button.place(x=300, y=175)
+    root.mainloop()
+    """def abrir_ventana_login():
         main_window.destroy()
         login_window = Login(root, volver_a_main)
 
@@ -32,7 +23,8 @@ def main():
         main_window.show()
 
     main_window = MainWindow(root, abrir_ventana_login)
-    root.mainloop()
+    root.mainloop()"""
     
-main()
+if __name__ == "__main__":
+    main()
 

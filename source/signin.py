@@ -1,14 +1,13 @@
 import tkinter as tk
 
 class SignIn:
-    def __init__(self, previous_window):
-        previous_window.destroy()
-        self.user = None
-        self.password = None
-        self.window = tk.Tk()
-        self.input_handler()
-        
-        
+	def __init__(self, previous_window):
+		previous_window.destroy()
+		self.user = None
+		self.password = None
+		self.window = tk.Tk()
+		self.input_handler()
+		
 	def input_handler(self):
 		"""Funcion que crea la interfaz y maneja los inputs"""
 		self.show_interface()

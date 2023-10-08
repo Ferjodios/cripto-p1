@@ -1,6 +1,6 @@
 import tkinter as tk
 
-class Login(tk.Toplevel):
+class LogIn(tk.Toplevel): #te he cambiado el nombre de la clase pa q las clases esten en camelcase
     def __init__(self, parent):
         parent.destroy()
         self.title("Login")

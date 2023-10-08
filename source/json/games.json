@@ -1,0 +1,28 @@
+[
+    {
+        "id_partida": 1,
+        "id_jugador1": "12345",
+        "id_jugador2": "67890",
+        "datos_juego": {
+            "personaje1": "Héroe",
+            "personaje2": "Villano",
+            "vida_jugador1": 100,
+            "vida_jugador2": 95,
+            "estado_juego": "En curso",
+            "turno": "Jugador 1"
+        }
+    },
+    {
+        "id_partida": 2,
+        "id_jugador1": "54321",
+        "id_jugador2": "98765",
+        "datos_juego": {
+            "personaje1": "Mago",
+            "personaje2": "Dragón",
+            "vida_jugador1": 80,
+            "vida_jugador2": 90,
+            "estado_juego": "En curso",
+            "turno": "Jugador 2"
+        }
+    }
+]

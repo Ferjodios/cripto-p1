@@ -1,18 +1,157 @@
 {
-    "vishnu/vishnu_back.png": {
-        "nombre": "Personaje 1",
-        "ataques": ["Ataque 1", "Ataque 2", "Ataque 3", "Ataga homo"]
+    "thanatos/thanatos_front.png": {
+        "nombre": "THANATOS",
+        "ataques": ["COLAPSO DEL ALMA", "AURA FUNESTA", "NOCHE INFINITA", "SEGADOR OSCURO"],
+		"COLAPSO DEL ALMA": {
+			"TIPO": "FISICO",
+			"DAÑO": 1000,
+			"PRECISION": 10
+		},
+		"AURA FUNESTA": {
+			"TIPO": "MEJORA",
+			"DAÑO": 15,
+			"PRECISION": 80
+		},
+		"NOCHE INFINITA": {
+			"TIPO": "MEJORA",
+			"DAÑO": 20,
+			"PRECISION": 95
+		},
+		"SEGADOR OSCURO": {
+			"TIPO": "MAGICO",
+			"DAÑO": 15,
+			"PRECISION": 90
+		}, 
+		"STATS": {
+			"VIDA": 100,
+			"DEFENSA": 50,
+			"RESISTENCIA": 50, 
+			"EVASION": 15, 
+			"ATAQUE": 15 
+		}
     },
     "vishnu/vishnu_front.png": {
-        "nombre": "Personaje 2",
-        "ataques": ["Ataque 4", "Ataque 5", "Ataque 6", "Ataque gay"]
+        "nombre": "VISHNU",
+        "ataques": ["SAMSARA", "PALMA SERPENTIN", "DEVA NOVA", "MANTRA MISTICO"],
+		"SAMSARA": {
+			"TIPO": "CURACION",
+			"DAÑO": 15,
+			"PRECISION": 70
+		},
+		"PALMA SERPENTIN": {
+			"TIPO": "FISICO",
+			"DAÑO": 25,
+			"PRECISION": 90
+		},
+		"DEVA NOVA": {
+			"TIPO": "MAGICO",
+			"DAÑO": 35,
+			"PRECISION": 75
+		},
+		"MANTRA MISTICO": {
+			"TIPO": "DEFENSA",
+			"DAÑO": 0,
+			"PRECISION": 90
+		}, 
+		"STATS": {
+			"VIDA": 100,
+			"DEFENSA": 25,
+			"RESISTENCIA": 35, 
+			"EVASION": 50, 
+			"ATAQUE": 25 
+		}
     },
 	"zeus/zeus_front.png": {
-        "nombre": "Personaje 2",
-        "ataques": ["Ataque 4", "fer warra", "Ataque 6", "Ataque gay"]
+        "nombre": "ZEUS",
+        "ataques": ["MURO ELECTRICO", "RAYO DESGARRADOR", "TORMENTA IONICA", "IRA DE ZEUS"],
+		"MURO ELECTRICO": {
+			"TIPO": "DEFENSA",
+			"DAÑO": 0,
+			"PRECISION": 80
+		},
+		"RAYO DESGARRADOR": {
+			"TIPO": "MAGICO",
+			"DAÑO": 20,
+			"PRECISION": 100
+		},
+		"TORMENTA IONICA": {
+			"TIPO": "MAGICO",
+			"DAÑO": 45,
+			"PRECISION": 60
+		},
+		"IRA DE ZEUS": {
+			"TIPO": "MEJORA",
+			"DAÑO": 15,
+			"PRECISION": 100
+		}, 
+		"STATS": {
+			"VIDA": 100,
+			"DEFENSA": 40,
+			"RESISTENCIA": 25, 
+			"EVASION": 15, 
+			"ATAQUE": 30 
+		}
     },
-	"zeus/zeus_back.png": {
-        "nombre": "Personaje 2",
-        "ataques": ["Ataque 4", "Ataque 5", "trueno", "Ataque gay"]
+	"inti/inti_front.png": {
+        "nombre": "INTI",
+        "ataques": ["RAYO SOLAR", "COSECHA FERTIL", "ECLIPSE DE PODER", "TANA AI"],
+		"RAYO SOLAR": {
+			"TIPO": "MAGICO",
+			"DAÑO": 30,
+			"PRECISION": 70
+		},
+		"COSECHA FERTIL": {
+			"TIPO": "CURACION",
+			"DAÑO": 50,
+			"PRECISION": 50
+		},
+		"ECLIPSE DE PODER": {
+			"TIPO": "MEJORA",
+			"DAÑO": 30,
+			"PRECISION": 60
+		},
+		"TANA AI": {
+			"TIPO": "FISICO",
+			"DAÑO": 30,
+			"PRECISION": 70
+		}, 
+		"STATS": {
+			"VIDA": 100,
+			"DEFENSA": 30,
+			"RESISTENCIA": 30, 
+			"EVASION": 30, 
+			"ATAQUE": 25
+		}
+    },
+	"susanoo/susanoo_front.png": {
+        "nombre": "SUSANOO",
+        "ataques": ["CORTE ACUATICO", "TORMENTA ELECTRICA", "PURIFICACION", "SEISMO"],
+		"CORTE ACUATICO": {
+			"TIPO": "FISICO",
+			"DAÑO": 20,
+			"PRECISION": 100
+		},
+		"TORMENTA ELECTRICA": {
+			"TIPO": "MAGICO",
+			"DAÑO": 30,
+			"PRECISION": 80
+		},
+		"PURIFICACION": {
+			"TIPO": "CURACION",
+			"DAÑO": 30,
+			"PRECISION": 80
+		},
+		"SEISMO": {
+			"TIPO": "MAGICO",
+			"DAÑO": 35,
+			"PRECISION": 70
+		}, 
+		"STATS": {
+			"VIDA": 100,
+			"DEFENSA": 15,
+			"RESISTENCIA": 15, 
+			"EVASION": 30, 
+			"ATAQUE": 40
+		}
     }
 }

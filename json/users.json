@@ -1,0 +1,63 @@
+{
+    "Client Register": [
+        {
+            "user": "assaasdas121",
+            "password": "Adsadsa1@"
+        },
+        {
+            "user": "asdasd123",
+            "password": "Ascsa12@"
+        },
+        {
+            "user": "12312312",
+            "password": "Asds1@"
+        },
+        {
+            "user": "\u00ba1221\u00ba",
+            "password": "qweqweasA12@"
+        },
+        {
+            "user": "31123",
+            "password": "12321asdqw!2A"
+        },
+        {
+            "user": "12123qwasd",
+            "password": "Asdfs1@"
+        },
+        {
+            "user": "David",
+            "password": "123asdAsd@",
+            "character": null
+        },
+        {
+            "user": "12david",
+            "password": "davidA1@",
+            "character": null
+        },
+        {
+            "user": "error",
+            "password": "asd1@A",
+            "character": null
+        },
+        {
+            "user": "bueno",
+            "password": "123asdA@",
+            "character": null
+        },
+        {
+            "user": "1212121212",
+            "password": "as12@A",
+            "character": null
+        },
+        {
+            "user": "111",
+            "password": "asdas123A@",
+            "character": null
+        },
+        {
+            "user": "Elbueno",
+            "password": "asd12@A",
+            "character": "Personaje 1"
+        }
+    ]
+}

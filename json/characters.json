@@ -1,0 +1,18 @@
+{
+    "vishnu/vishnu_back.png": {
+        "nombre": "Personaje 1",
+        "ataques": ["Ataque 1", "Ataque 2", "Ataque 3", "Ataga homo"]
+    },
+    "vishnu/vishnu_front.png": {
+        "nombre": "Personaje 2",
+        "ataques": ["Ataque 4", "Ataque 5", "Ataque 6", "Ataque gay"]
+    },
+	"zeus/zeus_front.png": {
+        "nombre": "Personaje 2",
+        "ataques": ["Ataque 4", "fer warra", "Ataque 6", "Ataque gay"]
+    },
+	"zeus/zeus_back.png": {
+        "nombre": "Personaje 2",
+        "ataques": ["Ataque 4", "Ataque 5", "trueno", "Ataque gay"]
+    }
+}

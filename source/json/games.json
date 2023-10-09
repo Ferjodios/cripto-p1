@@ -8,7 +8,7 @@
             "personaje1": "Héroe",
             "personaje2": "Villano",
             "vida_jugador1": 100,
-            "vida_jugador2": 95,
+            "vida_jugador2": 100,
             "turno": "Jugador 1"
         }
     },
@@ -20,8 +20,8 @@
         "datos_juego": {
             "personaje1": "Mago",
             "personaje2": "Dragón",
-            "vida_jugador1": 80,
-            "vida_jugador2": 90,
+            "vida_jugador1": 100,
+            "vida_jugador2": 100,
             "turno": "Jugador 2"
         }
     }

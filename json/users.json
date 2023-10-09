@@ -58,6 +58,11 @@
             "user": "Elbueno",
             "password": "asd12@A",
             "character": "Personaje 1"
+        },
+        {
+            "user": "ferjodio",
+            "password": "Passw0rd$",
+            "character": "Personaje 1"
         }
     ]
 }

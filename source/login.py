@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import messagebox
 from json_user_handler import JsonUserHandler
 from search_match import SearchMatch
+from character_chooser import CharacterChooser
 
 class LogIn:
 	
@@ -20,9 +21,14 @@ class LogIn:
 		self.user = username_entry.get()
 		self.password = password_entry.get()
 		if self.register.user_exists(self.user):
-			if self.register.get_password_from_user(self.user) == self.password:
-				messagebox.showinfo("Info", "Usuario logeado correctamente")
-				SearchMatch(self.window, self.user)
+			salt = self.register.get_salt_from_user(self.user)
+			if self.register.get_password_from_user(self.user) == self.register.hash_password(self.password, salt):
+				if self.register.get_character_from_user(self.user) == None:
+					messagebox.showinfo("Info", "Falta elegir personaje")
+					CharacterChooser(self.window, self.user)
+				else:
+					messagebox.showinfo("Info", "Usuario logeado correctamente")
+					SearchMatch(self.window, self.user)
 			else:
 				messagebox.showerror("Error", "Contraseña incorrecta")
 		else:

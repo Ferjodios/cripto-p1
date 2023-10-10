@@ -1,68 +1,35 @@
 {
     "Client Register": [
         {
-            "user": "11122211",
-            "password": "aguaA1@",
+            "user": "preubash",
+            "password": "fb5877356dcc9ba9b97706b722ab8133e7f473b2215b7a6c2bf724293b5a2389",
+            "character": "INTI"
+        },
+        {
+            "user": "gaygay",
+            "password": "e7f2a45b827b2f9d15f0357d55db6816e71f5d818e3baa7ae1c1901c74ac2966",
             "character": "ZEUS"
         },
         {
-            "user": "fer",
-            "password": "12asd1@A",
+            "user": "holi23A@",
+            "password": "4dc7b07468ed059db0a664afe65ba26d25f74013c9aae848c1263b39119e3fbf",
+            "character": "VISHNU"
+        },
+        {
+            "user": "ABC1@@",
+            "password": "bb958581da355fee5d670185061e09dca4c1dedf8ed961d4674f45b13114ac6e",
             "character": null
         },
         {
-            "user": "ferja",
-            "password": "aguita1A@",
-            "character": null
-        },
-        {
-            "user": "ASDASASD",
-            "password": "assdaaA1@",
+            "user": "mario1@A",
+            "password": "f04d4b94f7439f5ad0db8c257a87dd8da34789a57bf05550fec0945dddb82230",
+            "salt": "57c9062c5603f7c8da568db9a69fb9b9",
             "character": "THANATOS"
         },
         {
-            "user": "antonia",
-            "password": "134Aa1@",
-            "character": null
-        },
-        {
-            "user": "gay",
-            "password": "Das1@1aA",
-            "character": null
-        },
-        {
-            "user": "126789",
-            "password": "dAVID1@",
-            "character": null
-        },
-        {
-            "user": "SOYGAY",
-            "password": "asdA1@",
-            "character": null
-        },
-        {
-            "user": "mamahuevo",
-            "password": "1233sasA1@",
-            "character": null
-        },
-        {
-            "user": "joli",
-            "password": "1234asA1@",
-            "character": null
-        },
-        {
-            "user": "sees",
-            "password": "AASDDaA1@",
-            "character": null
-        },
-        {
-            "user": "asdasd11",
-            "password": "dAVIDA1@",
-            "character": null
-        },
-        {
-            "user": "wtf",
-            "password": "12Asdsa1@",
+            "user": "123asA@",
+            "password": "3067e7429e378e779df497d1137fb097cd272c2de6676e52ffd5c7a3834a5706",
+            "salt": "52fd2e31ede35d685b49b71cad24cfef",
             "character": null
         }
     ]

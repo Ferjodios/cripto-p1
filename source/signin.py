@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import messagebox
-import json
 import re
 from json_user_handler import JsonUserHandler
 from character_chooser import CharacterChooser
@@ -19,8 +18,7 @@ class SignIn:
 		"""Funcion que comprueba el formato de Sing in es correcto y lo guarda en un json"""
 		self.user = username_entry.get()
 		self.password = password_entry.get()
-		#self.save_user()
-		if self.user_handler() and self.password_handler():
+		if self.user_handler() and self.password_handler():	
 			self.register.save_data(self.user, self.password)
 			messagebox.showinfo("Info", "Usuario registrado correctamente")
 			CharacterChooser(self.window, self.user)
@@ -79,13 +77,3 @@ class SignIn:
 			messagebox.showerror("Error", "La contraseña debe tener entre 6 y 16 caracteres, al menos una letra mayúscula, un número y un caracter especial")
 			return False
 		return True
-
-	"""def save_user(self):
-		Funcion que guarda el usuario en un json
-		if self.user is not None and self.password is not None:
-			with open('json/users.json') as json_file:
-				data = json.load(json_file)
-				data[self.user] = self.password
-			with open('users.json', 'w') as outfile:
-				json.dump(data, outfile)
-			messagebox.showinfo("Info", "Usuario registrado correctamente")"""

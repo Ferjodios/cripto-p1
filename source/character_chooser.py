@@ -31,7 +31,6 @@ class CharacterChooser:
 	
 	def load_character(self):
 		"""Funcion que carga el personaje en el json"""
-		print(self.selected_character)
 		if self.register.save_character(self.user, self.selected_character):
 			messagebox.showinfo("Info", "Personaje guardado correctamente")
 			self.window.destroy()
@@ -40,7 +39,6 @@ class CharacterChooser:
 
 	def load_character_and_play(self):
 		"""Funcion que carga el personaje en el json"""
-		print(self.selected_character)
 		if self.register.save_character(self.user, self.selected_character):
 			messagebox.showinfo("Info", "Personaje guardado correctamente")
 			self.window.destroy()
@@ -50,7 +48,7 @@ class CharacterChooser:
 
 	def show_interface(self):
 		self.window.title("Character Chooser")
-		self.window.geometry("780x780")
+		self.window.geometry("780x600")
 		self.window.configure(bg='#333333')
 
 		with open("json/characters.json") as f:

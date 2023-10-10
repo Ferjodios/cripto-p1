@@ -1,5 +1,10 @@
 import json
 from tkinter import messagebox
+import os
+from cryptography.fernet import Fernet, InvalidToken
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+
 
 class JsonUserHandler:
 	def __init__(self):
@@ -15,11 +20,27 @@ class JsonUserHandler:
 		with open('json/users.json', 'w') as json_file:
 			json.dump(self.data, json_file, indent=4)
 	
+	def hash_password(self, password, salt):
+		"""Funcion que aplica una funcion hash a la contraseña"""
+		password = password.encode()
+		kdf = PBKDF2HMAC(
+			algorithm=hashes.SHA256(),
+			length=32,
+			salt=salt,
+			iterations=100000,
+		)
+		key = kdf.derive(password)
+		return key.hex()
+	
 	def save_data(self, user, password):
 		"""Funcion que guarda los datos en el json"""
 		# Agregar el nuevo usuario a la lista de usuarios
 		self.load_data()
-		new_user = {"user": user, "password": password, "character": None}
+		#hash password and save
+		salt = os.urandom(16)
+		password = self.hash_password(password, salt)
+		salt_hex = salt.hex()
+		new_user = {"user": user, "password": password, "salt": salt_hex, "character": None}
 		self.data.setdefault("Client Register", []).append(new_user)
 		self.save()
 	
@@ -59,4 +80,22 @@ class JsonUserHandler:
 			for user in self.data["Client Register"]:
 				if user["user"] == my_user:
 					return user["password"]
+		return False
+	
+	def get_salt_from_user(self, my_user):
+		"""Funcion que devuelve la salt del usuario"""
+		self.load_data()
+		if "Client Register" in self.data:
+			for user in self.data["Client Register"]:
+				if user["user"] == my_user:
+					return bytes.fromhex(user["salt"])
+		return False
+	
+	def get_character_from_user(self, my_user):
+		"""Funcion que devuelve el personaje del usuario"""
+		self.load_data()
+		if "Client Register" in self.data:
+			for user in self.data["Client Register"]:
+				if user["user"] == my_user:
+					return user["character"]
 		return False

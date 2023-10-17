@@ -41,8 +41,7 @@ class CharacterChooser:
 		"""Funcion que carga el personaje en el json"""
 		if self.register.save_character(self.user, self.selected_character):
 			messagebox.showinfo("Info", "Personaje guardado correctamente")
-			self.window.destroy()
-			SearchMatch(self.window, self.user)
+			SearchMatch(self.window, self.user, self.selected_character)
 		else:
 			messagebox.showerror("Error", "El usuario no existe")
 

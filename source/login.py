@@ -28,7 +28,7 @@ class LogIn:
 					CharacterChooser(self.window, self.user)
 				else:
 					messagebox.showinfo("Info", "Usuario logeado correctamente")
-					SearchMatch(self.window, self.user)
+					SearchMatch(self.window, self.user, self.register.get_character_from_user(self.user))
 			else:
 				messagebox.showerror("Error", "Contraseña incorrecta")
 		else:

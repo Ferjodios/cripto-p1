@@ -18,14 +18,7 @@ def main():
 
     login_button = tk.Button(root, text="Iniciar Sesión", font=button_font, command=lambda: LogIn(root))
     login_button.pack(side="right", padx=(10, 80), pady=5)
-    
-    """
-    signin_button = tk.Button(root, text = "Registrarte", command=lambda: SignIn(root), height = 5, width = 20 , bg="#1FA463")
-    signin_button.place(x=75 , y=175)12
 
-    login_button = tk.Button(root, text="Iniciar Sesión", command=lambda: Login(root), height = 5, width = 20, bg="#1FA463")
-    login_button.place(x=300, y=175)
-    """
     root.mainloop()
     
 if __name__ == "__main__":

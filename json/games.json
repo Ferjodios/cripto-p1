@@ -1,0 +1,31 @@
+[
+    {
+        "id_partida": 10,
+        "id_jugador1": "David123@",
+        "id_jugador2": null,
+        "juego_activo": false,
+		"cripto": {
+			"token": "",
+			"key": ""
+		},
+        "datos_juego": {
+            "personaje1": "VISHNU",
+            "personaje2": null,
+            "turno": "Jugador 1"
+        },
+		"stats1": {
+			"VIDA": 100,
+			"DEFENSA": 40,
+			"RESISTENCIA": 25, 
+			"EVASION": 15, 
+			"ATAQUE": 30 
+		},
+		"stats2": {
+			"VIDA": 100,
+			"DEFENSA": 40,
+			"RESISTENCIA": 25, 
+			"EVASION": 15, 
+			"ATAQUE": 30 
+		}
+    }
+]

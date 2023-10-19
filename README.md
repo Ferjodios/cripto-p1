@@ -1,7 +1,26 @@
 # cripto-p1
-If you don't want to keep any of your local changes and simply want to update your local repository to match the remote repository without preserving any local modifications, you can use the following command:
+git reset --hard //este
 
-git fetch origin
-git reset --hard origin/main
 
-This will fetch the latest changes from the remote repository (without merging them) and then reset your local branch (main) to match the remote branch (origin/main) without preserving any local changes. Be cautious when using this approach because it will discard all local changes and reset your branch to the state of the remote branch.
+
+##########################################################
+cifrado simetrico y autenticado
+from cryptography.fernet import Fernet
+
+-----Usuario1------ mensaje es el dato a encriptar
+
+key = Fernet.generate_key()
+f = Fernet(key)
+token = f.encrypt(ataque)
+// te guardas el token y la key. Duda de como guardar la key
+-----Usuario2-----
+f = Fernet(key)
+ataque  = f.decrypt(token)
+//consigues el mensaje
+
+##################################################################
+try:
+    mensaje_desencriptado = fernet.decrypt(mensaje_cifrado)
+    print("Mensaje desencriptado:", mensaje_desencriptado.decode('utf-8'))
+except Exception as e:
+    print("Error: No se pudo desencriptar el mensaje.")

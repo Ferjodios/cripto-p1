@@ -1,5 +1,4 @@
 import tkinter as tk
-from main_window import MainWindow
 from login import LogIn
 from signin import SignIn
 

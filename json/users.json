@@ -31,6 +31,18 @@
             "password": "3067e7429e378e779df497d1137fb097cd272c2de6676e52ffd5c7a3834a5706",
             "salt": "52fd2e31ede35d685b49b71cad24cfef",
             "character": null
+        },
+        {
+            "user": "David123@",
+            "password": "93014667efb3056937db0bd7da79557f44e9a6a8c10eb60a9f683f97a7e34ed3",
+            "salt": "e32fe22f6b7800b546d36377503ec7a4",
+            "character": "VISHNU"
+        },
+        {
+            "user": "David11@",
+            "password": "310413e71bac3c17e866b18b18bd024f0be9a83e1760f1a7552c9cb7785ab31f",
+            "salt": "5686809271af878872b7704e1bcace2a",
+            "character": "VISHNU"
         }
     ]
 }

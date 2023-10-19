@@ -41,6 +41,7 @@ class JsonMatchHandler:
     def search_inactive_match(self):
         for juego in self.data:
             if juego.get("juego_activo") is False:
+                juego["id_partida"] = True
                 return juego
         return None
     

@@ -38,6 +38,7 @@ class LogIn:
 		"""Funcion que muestra la interfaz"""
 		self.window.title("Log in")
 		self.window.geometry("500x500")
+		self.window.resizable(False, False)
 		self.window.configure(bg='#333333')
 
 		# Creamos un frame y lo metemos los widgets en el frame

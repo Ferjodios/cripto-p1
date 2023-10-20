@@ -3,22 +3,28 @@ from login import LogIn
 from signin import SignIn
 
 def main():
-    """Funcion main del programa"""
-    root = tk.Tk()
-    root.title("Untitled game uwu")
-    root.geometry("500x500")
+	"""Funcion main del programa"""
+	root = tk.Tk()
+	root.title("Untitled game uwu")
+	root.geometry("500x500")
+	root.resizable(False, False)
+	root.configure(bg='#333333')
 
-    title_label = tk.Label(root, text="Untitled Pokemon-like Game", font=("Helvetica", 20))
-    title_label.pack(pady=(80, 40))
+	# Creamos un frame y lo metemos los widgets en el frame
+	frame = tk.Frame(bg='#333333')
 
-    button_font = ("Helvetica", 14)
-    signin_button = tk.Button(root, text="Registrarse", font=button_font, command=lambda: SignIn(root))
-    signin_button.pack(side="left", padx=(80, 10), pady=5)
+	# Creamos los widgets
+	title_label = tk.Label(frame, text="Name of the game", bg='#333333', fg="#FF3399", font=("Arial", 30))
+	signin_button = tk.Button(frame, text="Registrarse", bg="#FF3399", fg="#FFFFFF", font=("Arial", 16), command=lambda: SignIn(root))
+	login_button = tk.Button(frame, text="Iniciar Sesion", bg="#FF3399", fg="#FFFFFF", font=("Arial", 16), command=lambda: LogIn(root))
 
-    login_button = tk.Button(root, text="Iniciar Sesión", font=button_font, command=lambda: LogIn(root))
-    login_button.pack(side="right", padx=(10, 80), pady=5)
+	# Colocamos los widgets en el frame
+	title_label.grid(row=0, column=0, columnspan=2, sticky="news", pady=40)
+	signin_button.grid(row=5, column=0, pady=20)
+	login_button.grid(row=5, column=1, pady=20)
+	frame.pack()
+	root.mainloop()
 
-    root.mainloop()
     
 if __name__ == "__main__":
     main()

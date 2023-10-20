@@ -48,6 +48,7 @@ class CharacterChooser:
 	def show_interface(self):
 		self.window.title("Character Chooser")
 		self.window.geometry("780x600")
+		self.window.resizable(False, False)
 		self.window.configure(bg='#333333')
 
 		with open("json/characters.json") as f:

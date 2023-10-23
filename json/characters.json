@@ -4,22 +4,22 @@
         "ataques": ["COLAPSO DEL ALMA", "AURA FUNESTA", "NOCHE INFINITA", "SEGADOR OSCURO"],
 		"COLAPSO DEL ALMA": {
 			"TIPO": "FISICO",
-			"DAÑO": 1000,
+			"DANO": 150,
 			"PRECISION": 10
 		},
 		"AURA FUNESTA": {
-			"TIPO": "MEJORA",
-			"DAÑO": 15,
+			"TIPO": "MEJORA ATAQUE",
+			"DANO": 15,
 			"PRECISION": 80
 		},
 		"NOCHE INFINITA": {
-			"TIPO": "MEJORA",
-			"DAÑO": 20,
+			"TIPO": "MEJORA EVASION",
+			"DANO": 10,
 			"PRECISION": 95
 		},
 		"SEGADOR OSCURO": {
 			"TIPO": "MAGICO",
-			"DAÑO": 15,
+			"DANO": 15,
 			"PRECISION": 90
 		}, 
 		"STATS": {
@@ -35,22 +35,22 @@
         "ataques": ["SAMSARA", "PALMA SERPENTIN", "DEVA NOVA", "MANTRA MISTICO"],
 		"SAMSARA": {
 			"TIPO": "CURACION",
-			"DAÑO": 15,
+			"DANO": 15,
 			"PRECISION": 70
 		},
 		"PALMA SERPENTIN": {
 			"TIPO": "FISICO",
-			"DAÑO": 25,
+			"DANO": 25,
 			"PRECISION": 90
 		},
 		"DEVA NOVA": {
 			"TIPO": "MAGICO",
-			"DAÑO": 35,
+			"DANO": 35,
 			"PRECISION": 75
 		},
 		"MANTRA MISTICO": {
 			"TIPO": "DEFENSA",
-			"DAÑO": 0,
+			"DANO": 0,
 			"PRECISION": 90
 		}, 
 		"STATS": {
@@ -66,22 +66,22 @@
         "ataques": ["MURO ELECTRICO", "RAYO DESGARRADOR", "TORMENTA IONICA", "IRA DE ZEUS"],
 		"MURO ELECTRICO": {
 			"TIPO": "DEFENSA",
-			"DAÑO": 0,
+			"DANO": 0,
 			"PRECISION": 80
 		},
 		"RAYO DESGARRADOR": {
 			"TIPO": "MAGICO",
-			"DAÑO": 20,
+			"DANO": 20,
 			"PRECISION": 100
 		},
 		"TORMENTA IONICA": {
 			"TIPO": "MAGICO",
-			"DAÑO": 45,
+			"DANO": 45,
 			"PRECISION": 60
 		},
 		"IRA DE ZEUS": {
-			"TIPO": "MEJORA",
-			"DAÑO": 15,
+			"TIPO": "MEJORA ATAQUE",
+			"DANO": 15,
 			"PRECISION": 100
 		}, 
 		"STATS": {
@@ -97,23 +97,23 @@
         "ataques": ["RAYO SOLAR", "COSECHA FERTIL", "ECLIPSE DE PODER", "TANA AI"],
 		"RAYO SOLAR": {
 			"TIPO": "MAGICO",
-			"DAÑO": 30,
-			"PRECISION": 70
+			"DANO": 30,
+			"PRECISION": 75
 		},
 		"COSECHA FERTIL": {
 			"TIPO": "CURACION",
-			"DAÑO": 50,
+			"DANO": 50,
 			"PRECISION": 50
 		},
 		"ECLIPSE DE PODER": {
-			"TIPO": "MEJORA",
-			"DAÑO": 30,
-			"PRECISION": 60
+			"TIPO": "MEJORA ATAQUE",
+			"DANO": 20,
+			"PRECISION": 70
 		},
 		"TANA AI": {
 			"TIPO": "FISICO",
-			"DAÑO": 30,
-			"PRECISION": 70
+			"DANO": 30,
+			"PRECISION": 75
 		}, 
 		"STATS": {
 			"VIDA": 100,
@@ -128,22 +128,22 @@
         "ataques": ["CORTE ACUATICO", "TORMENTA ELECTRICA", "PURIFICACION", "SEISMO"],
 		"CORTE ACUATICO": {
 			"TIPO": "FISICO",
-			"DAÑO": 20,
+			"DANO": 20,
 			"PRECISION": 100
 		},
 		"TORMENTA ELECTRICA": {
 			"TIPO": "MAGICO",
-			"DAÑO": 30,
+			"DANO": 30,
 			"PRECISION": 80
 		},
 		"PURIFICACION": {
 			"TIPO": "CURACION",
-			"DAÑO": 30,
+			"DANO": 30,
 			"PRECISION": 80
 		},
 		"SEISMO": {
 			"TIPO": "MAGICO",
-			"DAÑO": 35,
+			"DANO": 35,
 			"PRECISION": 70
 		}, 
 		"STATS": {

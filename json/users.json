@@ -43,6 +43,18 @@
             "password": "310413e71bac3c17e866b18b18bd024f0be9a83e1760f1a7552c9cb7785ab31f",
             "salt": "5686809271af878872b7704e1bcace2a",
             "character": "VISHNU"
+        },
+        {
+            "user": "ferjo",
+            "password": "1fb83d75aa17b01983835491679752d1ef4e5576f8502fbab31f8114528ac452",
+            "salt": "56344dc83bfbc0818f4b902014f3492a",
+            "character": "THANATOS"
+        },
+        {
+            "user": "ferjodio",
+            "password": "0d1c646e825e64e45280d072a3381afde8371261e7ca84ea2da037132d1e7807",
+            "salt": "1c22708868c94737869ed97149364a44",
+            "character": "VISHNU"
         }
     ]
 }

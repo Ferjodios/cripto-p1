@@ -1,10 +1,5 @@
 import json
-from tkinter import messagebox
-import os
-from cryptography.fernet import Fernet, InvalidToken
-from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
-
+from cryptography.fernet import Fernet
 
 class JsonMatchHandler:
     def __init__(self, file):
@@ -41,7 +36,6 @@ class JsonMatchHandler:
     def search_inactive_match(self):
         for juego in self.data:
             if juego.get("juego_activo") is False:
-                juego["id_partida"] = True
                 return juego
         return None
     
@@ -52,3 +46,45 @@ class JsonMatchHandler:
                 self.save()
                 return True
         return False
+    
+    def already_in_game(self, id):
+        for partida in self.data:
+            if partida["id_jugador1"] == id or partida["id_jugador2"] == id:
+                return True
+        return False
+    
+    def atacar_y_cambiar_turno(self, game, ataque, soy_jugador1):
+        game = self.encriptar_ataque(ataque, game)
+        game = self.change_turn(game, soy_jugador1)
+        self.update_game(game, game["id_partida"])
+        return game
+
+    def encriptar_ataque(self, ataque, game):
+        key = Fernet.generate_key()
+        f = Fernet(key)
+        token = f.encrypt(ataque.encode('utf-8'))
+
+        game["cripto"]["token"] = token.hex()
+        game["cripto"]["key"] = key.hex()
+        return game
+    
+    def change_turn(self, game, soy_jugador1):
+        if soy_jugador1:
+            game["datos_juego"]["turno"] = "Jugador 2"
+        else:
+            game["datos_juego"]["turno"] = "Jugador 1"
+        return game
+
+    def get_atack_from_token(self, game):
+        if game["cripto"]["key"] != "":
+            key = bytes.fromhex(game["cripto"]["key"])
+            token = bytes.fromhex(game["cripto"]["token"])
+            f = Fernet(key)
+            return f.decrypt(token).decode('utf-8')
+        else:
+            return ""
+    
+    def delete_game(self, game_id):
+        for partida in self.data:
+            if partida["id_partida"] == game_id:
+                self.data.remove(partida)

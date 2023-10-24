@@ -27,7 +27,7 @@ Este código ha sido probado y es compatible con las siguientes versiones de Pyt
 
 2. Instala las bibliotecas requeridas con los comandos mencionados anteriormente.
 
-3. Ejecuta el juego y disfruta de las batallas emocionantes en **Titanomachy**.
+3. Ejecuta el juego, desde __init__.py y disfruta de las batallas emocionantes en **Titanomachy**.
 
 ## Créditos
 Este proyecto fue desarrollado por Ferjodios y DavidY. Si tienes alguna pregunta o sugerencia, no dudes en contactarnos.

@@ -19,9 +19,9 @@ def main():
 	login_button = tk.Button(frame, text="Iniciar Sesion", bg="#FF3399", fg="#FFFFFF", font=("Arial", 16), command=lambda: LogIn(root))
 
 	# Colocamos los widgets en el frame
-	title_label.grid(row=0, column=0, columnspan=2, sticky="news", pady=40)
-	signin_button.grid(row=5, column=0, pady=20)
-	login_button.grid(row=5, column=1, pady=20)
+	title_label.grid(row=0, column=0, columnspan=2, sticky="news", pady=80)
+	signin_button.grid(row=5, column=0, pady=90)
+	login_button.grid(row=5, column=1, pady=90)
 	frame.pack()
 	root.mainloop()
 

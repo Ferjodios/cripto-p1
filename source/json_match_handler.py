@@ -88,3 +88,4 @@ class JsonMatchHandler:
         for partida in self.data:
             if partida["id_partida"] == game_id:
                 self.data.remove(partida)
+        self.save()

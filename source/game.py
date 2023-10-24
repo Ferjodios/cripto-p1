@@ -11,15 +11,17 @@ class Game:
         self.match_handler = JsonMatchHandler('json/games.json')
         self.character_handler = JsonCharacterHandler('json/characters.json')
         self.game_already_done = False
+        self.show_window = True
         self.text_box = "Es tu turno"
         self.set_character_attributes(user)
         self.check_turn()
         if self.es_mi_turno:
             self.check_stats(parent)
             self.check_last_attack()
-        parent.destroy()
-        self.window = tk.Tk()
-        self.configure_window()
+        if self.show_window:
+            parent.destroy()
+            self.window = tk.Tk()
+            self.configure_window()
 
     def configure_window(self):
         self.window.title("Untitled game uwu")
@@ -110,7 +112,6 @@ class Game:
                     self.text_box = "Es tu turno, el enemigo se ha curado " + str(self.enemy_data[ataque]["DANO"] + self.enemy_stats["ATAQUE"]) + " puntos de vida"
                 else:
                     self.text_box = "Es tu turno, el enemigo falló su ataque"
-                    self.game_already_done = True
 
             elif random.randint(0, 100) <= self.enemy_data[ataque]["PRECISION"] - self.self_stats["EVASION"]:
                 if tipo_ataque == "FISICO":
@@ -186,6 +187,7 @@ class Game:
         self.text_box = "Juego terminado, has ganado la partida"
         self.match_handler.delete_game(self.game_data["id_partida"])
         parent.destroy()
+        self.show_window = False
     
     def save_info(self):
         if self.soy_jugador1:
@@ -194,4 +196,10 @@ class Game:
         else:
             self.game_data["stats1"] = self.enemy_stats
             self.game_data["stats2"] = self.self_stats
+        if self.game_already_done:
+            self.match_handler.change_turn(self.game_data, self.soy_jugador1)
+            if self.soy_jugador1:
+                self.game_data["id_jugador1"] = ""
+            else:
+                self.game_data["id_jugador2"] = ""
         self.match_handler.update_game(self.game_data, self.game_data["id_partida"])

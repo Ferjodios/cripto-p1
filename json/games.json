@@ -2,7 +2,7 @@
     {
         "id_partida": 10,
         "id_jugador1": "ferjodio",
-        "id_jugador2": "ferjo",
+        "id_jugador2": "",
         "juego_activo": true,
         "cripto": {
             "token": "",
@@ -11,21 +11,50 @@
         "datos_juego": {
             "personaje1": "VISHNU",
             "personaje2": "THANATOS",
-            "turno": "Jugador 2"
+            "turno": "Jugador 1"
         },
         "stats1": {
-            "VIDA": 95,
+            "VIDA": 5,
             "DEFENSA": 40,
             "RESISTENCIA": 25,
             "EVASION": 15,
             "ATAQUE": 30
         },
         "stats2": {
-            "VIDA": 85,
+            "VIDA": 0,
             "DEFENSA": 50,
             "RESISTENCIA": 50,
             "EVASION": 15,
             "ATAQUE": 15
+        }
+    },
+    {
+        "id_partida": 11,
+        "id_jugador1": "ferjo",
+        "id_jugador2": "",
+        "juego_activo": false,
+        "cripto": {
+            "token": "",
+            "key": ""
+        },
+        "datos_juego": {
+            "personaje1": "THANATOS",
+            "personaje2": null,
+            "turno": "Jugador 2"
+        },
+        "stats1": {
+            "VIDA": 100,
+            "DEFENSA": 50,
+            "RESISTENCIA": 50,
+            "EVASION": 10,
+            "ATAQUE": 15
+        },
+        "stats2": {
+            "VIDA": 100,
+            "DEFENSA": 40,
+            "RESISTENCIA": 25,
+            "EVASION": 15,
+            "ATAQUE": 30
         }
     }
 ]

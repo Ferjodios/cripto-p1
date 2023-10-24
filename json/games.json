@@ -27,5 +27,34 @@
             "EVASION": 20,
             "ATAQUE": 25
         }
+    },
+    {
+        "id_partida": 12,
+        "id_jugador1": "ferjos",
+        "id_jugador2": "ferjodios",
+        "juego_activo": true,
+        "cripto": {
+            "token": "674141414141426c4e39646e486a65756e2d50394336776f52414c69482d5a4678714d3165785f782d4b5032396a5037616c442d46596846524352523843427751454b37694b3844564169784a375a485a714841585864335743533573506f37485a57704149504b776e7a55376e744e437548705172343d",
+            "key": "3733576f4541583534776b5f655272695942736b2d6f5651426b335a7a6b344a7a7336473147764d6261493d"
+        },
+        "datos_juego": {
+            "personaje1": "THANATOS",
+            "personaje2": "SUSANOO",
+            "turno": "Jugador 1"
+        },
+        "stats1": {
+            "VIDA": 100,
+            "DEFENSA": 35,
+            "RESISTENCIA": 35,
+            "EVASION": 10,
+            "ATAQUE": 15
+        },
+        "stats2": {
+            "VIDA": 100,
+            "DEFENSA": 15,
+            "RESISTENCIA": 15,
+            "EVASION": 10,
+            "ATAQUE": 40
+        }
     }
 ]

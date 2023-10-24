@@ -2,7 +2,7 @@
 
 ## Descripción
 **Titanomachy** es un juego de rol (RPG) asíncrono de combate por turnos en el que los jugadores se registran, eligen sus personajes y participan en emocionantes batallas contra otros usuarios. Cada jugador puede realizar una serie de acciones, como atacar, defenderse o curarse, durante su turno. La partida continúa hasta que uno de los jugadores se queda sin puntos de salud. El ganador se notifica al final de la partida, y ambos jugadores pueden buscar nuevos combates.
-La **Titanomachy** está hecha a partir del módulo Tkinter que nos permite diseñar de forma sencilla una interfaz gráfica.
+**Titanomachy** está hecho a partir del módulo Tkinter que nos permite diseñar de forma sencilla una interfaz gráfica.
 
 ## Requisitos
 Asegúrate de tener las siguientes bibliotecas instaladas antes de ejecutar el código:

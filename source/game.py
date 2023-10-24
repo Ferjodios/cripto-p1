@@ -94,7 +94,7 @@ class Game:
             messagebox.showinfo("Info", "No es tu turno, espera a que la otra persona también juegue")
             self.window.destroy()
         elif self.game_already_done:
-            messagebox.showinfo("Info", "Ya acabó el juego, espera a que tu rival vea la victoria para empezar una nueva partida")
+            messagebox.showinfo("Info", "Ya acabó el juego, vuelve a iniciar sesión para jugar de nuevo")
             self.window.destroy()
         else:
             self.game_data = self.match_handler.atacar_y_cambiar_turno(self.game_data, nombre_ataque, self.soy_jugador1)
@@ -125,7 +125,7 @@ class Game:
                     self.self_stats["VIDA"] -= daño
                     if self.self_stats["VIDA"] <= 0:
                         self.self_stats["VIDA"] = 0
-                        self.text_box = "Has perdido, espera a que tu rival vea la victoria para empezar una nueva partida"
+                        self.text_box = "Has perdido, vuelve a iniciar sesión para jugar de nuevo"
                         self.game_already_done = True
                     else:
                         self.text_box = "Es tu turno, te quitaron " + str(daño) + " puntos de vida"

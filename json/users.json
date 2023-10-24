@@ -1,38 +1,6 @@
 {
     "Client Register": [
         {
-            "user": "preubash",
-            "password": "fb5877356dcc9ba9b97706b722ab8133e7f473b2215b7a6c2bf724293b5a2389",
-            "character": "INTI"
-        },
-        {
-            "user": "gaygay",
-            "password": "e7f2a45b827b2f9d15f0357d55db6816e71f5d818e3baa7ae1c1901c74ac2966",
-            "character": "ZEUS"
-        },
-        {
-            "user": "holi23A@",
-            "password": "4dc7b07468ed059db0a664afe65ba26d25f74013c9aae848c1263b39119e3fbf",
-            "character": "VISHNU"
-        },
-        {
-            "user": "ABC1@@",
-            "password": "bb958581da355fee5d670185061e09dca4c1dedf8ed961d4674f45b13114ac6e",
-            "character": null
-        },
-        {
-            "user": "mario1@A",
-            "password": "f04d4b94f7439f5ad0db8c257a87dd8da34789a57bf05550fec0945dddb82230",
-            "salt": "57c9062c5603f7c8da568db9a69fb9b9",
-            "character": "THANATOS"
-        },
-        {
-            "user": "123asA@",
-            "password": "3067e7429e378e779df497d1137fb097cd272c2de6676e52ffd5c7a3834a5706",
-            "salt": "52fd2e31ede35d685b49b71cad24cfef",
-            "character": null
-        },
-        {
             "user": "David123@",
             "password": "93014667efb3056937db0bd7da79557f44e9a6a8c10eb60a9f683f97a7e34ed3",
             "salt": "e32fe22f6b7800b546d36377503ec7a4",
@@ -61,6 +29,12 @@
             "password": "ee1ad9dbc7a2dac9fba91d1ed28932ee8187758260f9a8c2f43df893ed454a65",
             "salt": "fd9b05310a37b51131547ca31dea2645",
             "character": "ZEUS"
+        },
+        {
+            "user": "ferjos",
+            "password": "4d1fcd2f1aa9230c6354bbcf8f896deb27eccc5f67cca34ddda5f1551f13319f",
+            "salt": "e2143c3f6dcdf740a7ed86d44ec898a4",
+            "character": "THANATOS"
         }
     ]
 }

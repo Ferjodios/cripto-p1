@@ -26,7 +26,7 @@ class SignIn:
 		
 	def show_interface(self):
 		"""Funcion que muestra la interfaz"""
-		self.window.title("Sign In")
+		self.window.title("Titanomachy")
 		self.window.geometry("500x500")
 		self.window.resizable(False, False)
 		self.window.configure(bg='#333333')

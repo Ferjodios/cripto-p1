@@ -16,7 +16,7 @@ class SearchMatch:
             self.configure_window()
 
     def configure_window(self):
-        self.window.title("Untitled game uwu")
+        self.window.title("Titanomachy")
         self.window.geometry("500x500")
         self.window.resizable(False, False)
         self.window.configure(bg='#333333')

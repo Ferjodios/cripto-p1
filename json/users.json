@@ -55,6 +55,12 @@
             "password": "0d1c646e825e64e45280d072a3381afde8371261e7ca84ea2da037132d1e7807",
             "salt": "1c22708868c94737869ed97149364a44",
             "character": "VISHNU"
+        },
+        {
+            "user": "ferjodios",
+            "password": "ee1ad9dbc7a2dac9fba91d1ed28932ee8187758260f9a8c2f43df893ed454a65",
+            "salt": "fd9b05310a37b51131547ca31dea2645",
+            "character": "ZEUS"
         }
     ]
 }

@@ -1,4 +1,3 @@
-import json
 import tkinter as tk
 from tkinter import messagebox
 from json_user_handler import JsonUserHandler
@@ -36,7 +35,7 @@ class LogIn:
 
 	def show_interface(self):
 		"""Funcion que muestra la interfaz"""
-		self.window.title("Log in")
+		self.window.title("Titanomachy")
 		self.window.geometry("500x500")
 		self.window.resizable(False, False)
 		self.window.configure(bg='#333333')

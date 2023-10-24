@@ -1,8 +1,8 @@
 import tkinter as tk
-from tkinter import PhotoImage
 from tkinter import messagebox
 from json_match_handler import JsonMatchHandler
 from json_character_handler import JsonCharacterHandler
+from PIL import Image, ImageTk
 import random
 
 class Game:
@@ -24,56 +24,59 @@ class Game:
             self.configure_window()
 
     def configure_window(self):
-        self.window.title("Untitled game uwu")
-        self.window.geometry("600x400")
+        self.window.title("Titanomachy")
+        self.window.geometry("600x480")
+        self.window.resizable(False, False)
+        self.window.configure(bg='#333333')
         ataques = self.character_data["ataques"]
 
-        # Crear la caja con texto arriba a la izquierda
-        caja_texto = tk.Frame(self.window, bd=2, relief=tk.SUNKEN)
-        caja_texto.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+        #Imagen de fondo
+        """bg_image = Image.open(f"media/fondo_dnd.png")
+        bg_image_tk = ImageTk.PhotoImage(bg_image)
+        bg_label = tk.Label(self.window, image=bg_image_tk)
+        bg_label.place(x=0, y=0, relheight=1, relwidth=1)"""
 
-        # Crear un texto amplio en la caja de texto
-        texto_amplio = tk.Text(caja_texto, height=5, width=40)
-        texto_amplio.insert(tk.END, self.text_box)
-        texto_amplio.pack()
+        #Caja con texto de información
+        label_texto = tk.Label(self.window, text=self.text_box, width=35, height=4, font=("Arial", 13), wraplength=280, justify="left")
+        label_texto.place(x=20, y=20)
 
-        caja1 = tk.Frame(self.window, bd=2, relief=tk.SUNKEN)
-        caja1.pack(side=tk.BOTTOM, fill=tk.X, expand=True)
+        #Caja de abajo con los botones
+        caja1 = tk.Frame(self.window, height=105, width=580, bg='#333333', highlightbackground="black", highlightthickness=2)
+        caja1.place(x=10, y=370)
 
-        boton_ataque1 = tk.Button(caja1, text=ataques[0], command=lambda: self.atacar(ataques[0]))
-        boton_ataque2 = tk.Button(caja1, text=ataques[1], command=lambda: self.atacar(ataques[1]))
-        boton_ataque3 = tk.Button(caja1, text=ataques[2], command=lambda: self.atacar(ataques[2]))
-        boton_ataque4 = tk.Button(caja1, text=ataques[3], command=lambda: self.atacar(ataques[3]))
+        boton_ataque1 = tk.Button(caja1, text=ataques[0], command=lambda: self.atacar(ataques[0]), width=25, height=2)
+        boton_ataque2 = tk.Button(caja1, text=ataques[1], command=lambda: self.atacar(ataques[1]), width=25, height=2)
+        boton_ataque3 = tk.Button(caja1, text=ataques[2], command=lambda: self.atacar(ataques[2]), width=25, height=2)
+        boton_ataque4 = tk.Button(caja1, text=ataques[3], command=lambda: self.atacar(ataques[3]), width=25, height=2)
 
-        boton_ataque1.grid(row=0, column=0)
-        boton_ataque2.grid(row=0, column=1)
-        boton_ataque3.grid(row=1, column=0)
-        boton_ataque4.grid(row=1, column=1)
+        boton_ataque1.place(x=5, y=5)
+        boton_ataque2.place(x=5, y=55)
+        boton_ataque3.place(x=200, y=5)
+        boton_ataque4.place(x=200, y=55)
 
-        boton_salir = tk.Button(caja1, text="Salir", command=lambda: self.window.destroy())
-        boton_salir.grid(row=0, column=4)
+        boton_salir = tk.Button(caja1, text="SALIR", command=lambda: self.window.destroy(), width=15, height=3)
+        boton_salir.place(x=420, y=22)
 
         #Personaje propio
-        imagen_personaje_propio = PhotoImage(file="media/" + self.self_character.lower() + "/" + self.self_character.lower() + "_back.png")
-        imagen_personaje_propio = imagen_personaje_propio.subsample(2)
-        imagen_personaje_propio_label = tk.Label(self.window, image=imagen_personaje_propio)
-        imagen_personaje_propio_label.pack(side=tk.LEFT)
+        img_self_champ = Image.open(f"media/" + self.self_character.lower() + "/" + self.self_character.lower() + "_back.png")
+        img_self_champ = img_self_champ.resize((120, 200))
+        img_self_champ_tk = ImageTk.PhotoImage(img_self_champ)
+        img_self_champ_label = tk.Label(self.window, image=img_self_champ_tk, bg='#333333')
+        img_self_champ_label.place(x=80, y=160)
 
-        # Crear un label con la vida del personaje propio encima de la imagen
-        vida_label_propio = tk.Label(self.window, text="Vida: " + str(self.self_stats["VIDA"]) + "/100")
-        vida_label_propio.pack(side=tk.LEFT)
+        # Label con la vida del personaje propio encima de la imagen
+        ps_self_label = tk.Label(self.window, text="PS: " + str(self.self_stats["VIDA"]) + "/100", font=("Arial", 16), bg='#333333', foreground="white")
+        ps_self_label.place(x=85, y=125)
 
         #Personaje enemigo
-        caja_enemigo = tk.Frame(self.window, bd=2, relief=tk.SUNKEN)
-        caja_enemigo.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
+        img_enemy_champ = Image.open(f"media/" + self.enemy_character.lower() + "/" + self.enemy_character.lower() + "_front.png")
+        img_enemy_champ = img_enemy_champ.resize((120, 200))
+        img_enemy_champ_tk = ImageTk.PhotoImage(img_enemy_champ)
+        img_enemy_champ_label = tk.Label(self.window, image=img_enemy_champ_tk, bg='#333333')
+        img_enemy_champ_label.place(x=420, y=50)
 
-        imagen_personaje_enemigo = PhotoImage(file="media/" + self.enemy_character.lower() + "/" + self.enemy_character.lower() + "_front.png")
-        imagen_personaje_enemigo = imagen_personaje_enemigo.subsample(2)
-        imagen_personaje_enemigo_label = tk.Label(caja_enemigo, image=imagen_personaje_enemigo)
-        imagen_personaje_enemigo_label.pack()
-
-        vida_enemigo_label = tk.Label(caja_enemigo, text="Vida: " + str(self.enemy_stats["VIDA"]) + "/100")
-        vida_enemigo_label.pack()
+        ps_enemy_label = tk.Label(self.window, text="PS: " + str(self.enemy_stats["VIDA"]) + "/100", font=("Arial", 16), bg='#333333', foreground="white")
+        ps_enemy_label.place(x=420, y=260)
 
         self.window.mainloop()
     
@@ -106,7 +109,7 @@ class Game:
             tipo_ataque = self.enemy_data[ataque]["TIPO"]
             if tipo_ataque == "CURACION":
                 if random.randint(0, 100) <= self.enemy_data[ataque]["PRECISION"]:
-                    self.enemy_stats["VIDA"] += self.enemy_data[ataque]["DANO"] + self.enemy_stats["ATAQUE"]
+                    self.enemy_stats["VIDA"] += self.enemy_data[ataque]["DANO"]
                     if self.enemy_stats["VIDA"] >= 100:
                         self.enemy_stats["VIDA"] = 100
                     self.text_box = "Es tu turno, el enemigo se ha curado " + str(self.enemy_data[ataque]["DANO"] + self.enemy_stats["ATAQUE"]) + " puntos de vida"
@@ -117,6 +120,8 @@ class Game:
                 if tipo_ataque == "FISICO":
                     daño_teórico = self.enemy_data[ataque]["DANO"] + self.enemy_stats["ATAQUE"]
                     daño = daño_teórico - self.self_stats["DEFENSA"]
+                    if daño < 0:
+                        daño = 0
                     self.self_stats["VIDA"] -= daño
                     if self.self_stats["VIDA"] <= 0:
                         self.self_stats["VIDA"] = 0
@@ -141,6 +146,8 @@ class Game:
                 elif tipo_ataque == "MAGICO":
                     daño_teórico = self.enemy_data[ataque]["DANO"] + self.enemy_stats["ATAQUE"]
                     daño = daño_teórico - self.self_stats["RESISTENCIA"]
+                    if daño < 0:
+                        daño = 0
                     self.self_stats["VIDA"] -= daño
                     if self.self_stats["VIDA"] <= 0:
                         self.self_stats["VIDA"] = 0

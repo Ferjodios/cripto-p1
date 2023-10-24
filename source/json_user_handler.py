@@ -1,7 +1,5 @@
 import json
-from tkinter import messagebox
 import os
-from cryptography.fernet import Fernet, InvalidToken
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
@@ -29,8 +27,8 @@ class JsonUserHandler:
 			salt=salt,
 			iterations=100000,
 		)
-		key = kdf.derive(password)
-		return key.hex()
+		pswd_hashed = kdf.derive(password)
+		return pswd_hashed.hex()
 	
 	def save_data(self, user, password):
 		"""Funcion que guarda los datos en el json"""

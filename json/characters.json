@@ -24,8 +24,8 @@
 		}, 
 		"STATS": {
 			"VIDA": 100,
-			"DEFENSA": 50,
-			"RESISTENCIA": 50, 
+			"DEFENSA": 35,
+			"RESISTENCIA": 35, 
 			"EVASION": 10, 
 			"ATAQUE": 15 
 		}
@@ -150,7 +150,7 @@
 			"VIDA": 100,
 			"DEFENSA": 15,
 			"RESISTENCIA": 15, 
-			"EVASION": 15, 
+			"EVASION": 10, 
 			"ATAQUE": 40
 		}
     }

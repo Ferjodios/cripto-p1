@@ -46,7 +46,7 @@ class CharacterChooser:
 			messagebox.showerror("Error", "El usuario no existe")
 
 	def show_interface(self):
-		self.window.title("Character Chooser")
+		self.window.title("Titanomachy")
 		self.window.geometry("780x600")
 		self.window.resizable(False, False)
 		self.window.configure(bg='#333333')

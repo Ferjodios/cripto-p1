@@ -30,10 +30,10 @@ Este código ha sido probado y es compatible con las siguientes versiones de Pyt
 3. Ejecuta el juego y disfruta de las batallas emocionantes en **Titanomachy**.
 
 ## Créditos
-Este proyecto fue desarrollado por [Tu Nombre] y [Otros Colaboradores]. Si tienes alguna pregunta o sugerencia, no dudes en contactarnos.
+Este proyecto fue desarrollado por Ferjodios y DavidY. Si tienes alguna pregunta o sugerencia, no dudes en contactarnos.
 
 ## Licencia
-Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para obtener más detalles.
+Este proyecto es de libre uso, sientete libre para descargarlo, modificarlo y distribuirlo libremente.
 
 ---
 

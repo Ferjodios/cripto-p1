@@ -1,0 +1,25 @@
+## Requisitos
+Asegúrate de tener las siguientes bibliotecas instaladas antes de ejecutar el código:
+
+- **cryptography**: Para el hash y el cifrado. Puedes instalarlo con el siguiente comando:
+    ```
+    pip install cryptography
+    ```
+
+- **Pillow**: Para el procesamiento de imágenes en Python. Puedes instalarlo con el siguiente comando:
+    ```
+    pip install Pillow
+    ```
+
+## Compatibilidad
+Este código ha sido probado y es compatible con las siguientes versiones de Python:
+
+- Python 3.8.7
+- Python 3.12.0
+
+## Instrucciones de Uso
+1. Clona este repositorio o descarga los archivos.
+
+2. Instala las bibliotecas requeridas con los comandos mencionados anteriormente.
+
+3. Ejecuta el juego, desde __init__.py y disfruta de las batallas emocionantes en **Titanomachy**.

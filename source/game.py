@@ -6,8 +6,9 @@ from PIL import Image, ImageTk
 import random
 
 class Game:
-    def __init__(self, parent, game_data, user):
+    def __init__(self, parent, game_data, user, player_password):
         self.game_data = game_data
+        self.player_password = player_password
         self.match_handler = JsonMatchHandler('json/games.json')
         self.character_handler = JsonCharacterHandler('json/characters.json')
         self.game_already_done = False
@@ -97,12 +98,12 @@ class Game:
             messagebox.showinfo("Info", "Ya acabó el juego, vuelve a iniciar sesión para jugar de nuevo")
             self.window.destroy()
         else:
-            self.game_data = self.match_handler.atacar_y_cambiar_turno(self.game_data, nombre_ataque, self.soy_jugador1)
+            self.game_data = self.match_handler.atacar_y_cambiar_turno(self.game_data, nombre_ataque, self.soy_jugador1, self.player_password)
             messagebox.showinfo("Info", "Has atacado, vuelve cuando la otra persona ya haya jugado")
             self.window.destroy()
 
     def check_last_attack(self):
-        ataque = self.match_handler.get_atack_from_token(self.game_data).upper()
+        ataque = self.match_handler.get_atack_from_token_asimetrico(self.game_data, self.soy_jugador1).upper()
         self.game_data["cripto"]["key"] = ""
         self.game_data["cripto"]["token"] = ""
         if ataque != "":

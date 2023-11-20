@@ -3,11 +3,15 @@ from tkinter import messagebox
 from game import Game
 from json_match_handler import JsonMatchHandler
 from json_character_handler import JsonCharacterHandler
+from Crypto.Hash import SHA256
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_OAEP
 
 class SearchMatch:
-    def __init__(self, parent, player_user, player_champ):
+    def __init__(self, parent, player_user, player_champ, player_password):
         self.player_user = player_user
         self.player_champ = player_champ
+        self.player_password = player_password
         self.games = JsonMatchHandler('json/games.json')
         self.characterHandler = JsonCharacterHandler('json/characters.json')
         if not self.check_if_already_in_game(parent):
@@ -34,14 +38,14 @@ class SearchMatch:
         if self.games.already_in_game(self.player_user):
             game = self.games.have_game_active(self.player_user)
             if game is not None:
-                Game(parent, game, self.player_user)
+                Game(parent, game, self.player_user, self.player_password)
             else:
                 messagebox.showinfo("Info", "Aún no se ha encontrado partida, vuelva más tarde")
                 parent.destroy()
             return True
         return False
             
-            
+    #Aquí tengo que cambiar el formato del json para tener las dos claves publicas como atributos en vez de key        
     def crear_partida(self):
         new_game = {
             "id_partida": self.games.new_match_id(),
@@ -50,7 +54,8 @@ class SearchMatch:
             "juego_activo": False,
             "cripto": {
                 "token": "",
-                "key": ""
+                "public_jugador1": self.get_public_password(),
+                "public_jugador2": ""
             },
             "datos_juego": {
                 "personaje1": self.player_champ,
@@ -80,6 +85,19 @@ class SearchMatch:
             inactive_game["id_jugador2"] = self.player_user
             inactive_game["datos_juego"]["personaje2"] = self.player_champ
             inactive_game["stats2"] = self.characterHandler.get_stats_by_name(self.player_champ)
+            inactive_game["cripto"]["public_jugador2"] = self.get_public_password()
             self.games.update_game(inactive_game, inactive_game["id_partida"])
             messagebox.showinfo("Info", "Partida encontrada")
-            Game(self.window, inactive_game, self.player_user)
+            Game(self.window, inactive_game, self.player_user, self.player_password)
+
+    def get_public_password(self):
+        password = self.player_password.encode('utf-8')
+        #Generar clave privada
+        hashed_password = SHA256.new(password).digest()
+
+        private_key = RSA.import_key(hashed_password)
+
+        #Derivo la clave publica a partir de la privada
+        n = private_key.n
+        e = private_key.e
+        return RSA.construct((n, e))

@@ -6,9 +6,10 @@ from PIL import Image, ImageTk
 from search_match import SearchMatch
 
 class CharacterChooser:
-	def __init__(self, previous_window, user):
+	def __init__(self, previous_window, user, password):
 		previous_window.destroy()
 		self.user = user
+		self.password = password
 		self.window = tk.Tk()
 		self.imagenes = []
 		self.selected_character = None
@@ -41,7 +42,7 @@ class CharacterChooser:
 		"""Funcion que carga el personaje en el json"""
 		if self.register.save_character(self.user, self.selected_character):
 			messagebox.showinfo("Info", "Personaje guardado correctamente")
-			SearchMatch(self.window, self.user, self.selected_character)
+			SearchMatch(self.window, self.user, self.selected_character, self.password)
 		else:
 			messagebox.showerror("Error", "El usuario no existe")
 

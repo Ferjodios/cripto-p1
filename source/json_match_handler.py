@@ -1,6 +1,10 @@
 import json
 from cryptography.fernet import Fernet
 
+from Crypto.Hash import SHA256
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import PKCS1_OAEP
+
 class JsonMatchHandler:
     def __init__(self, file):
         self.data = []
@@ -53,8 +57,8 @@ class JsonMatchHandler:
                 return True
         return False
     
-    def atacar_y_cambiar_turno(self, game, ataque, soy_jugador1):
-        game = self.encriptar_ataque(ataque, game)
+    def atacar_y_cambiar_turno(self, game, ataque, soy_jugador1, player_password):
+        game = self.encriptar_ataque_asimetrico(ataque, game, player_password)
         game = self.change_turn(game, soy_jugador1)
         self.update_game(game, game["id_partida"])
         return game
@@ -67,6 +71,17 @@ class JsonMatchHandler:
         game["cripto"]["token"] = token.hex()
         game["cripto"]["key"] = key.hex()
         return game
+    
+    def encriptar_ataque_asimetrico(self, ataque, game, player_password):
+        password_utf = player_password.encode('utf-8')
+        #Generar clave privada
+        hashed_password = SHA256.new(password_utf).digest()
+        private_key = RSA.import_key(hashed_password)
+
+        encryptor = PKCS1_OAEP.new(private_key)
+        game["cripto"]["token"] = encryptor.encrypt(ataque)
+        return game
+
     
     def change_turn(self, game, soy_jugador1):
         if soy_jugador1:
@@ -83,6 +98,16 @@ class JsonMatchHandler:
             return f.decrypt(token).decode('utf-8')
         else:
             return ""
+        
+    def get_atack_from_token_asimetrico(self, game, soy_jugador1):
+        #Tengo como atributo del handler la clave privada I think
+        if soy_jugador1:
+            public_key = game["cripto"]["public_jugador2"]
+        else:
+            public_key = game["cripto"]["public_jugador1"]
+
+        decryptor = PKCS1_OAEP.new(public_key)
+        return decryptor.decrypt(game["cripto"]["token"])
     
     def delete_game(self, game_id):
         for partida in self.data:

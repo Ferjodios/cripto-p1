@@ -21,7 +21,7 @@ class SignIn:
 		if self.user_handler() and self.password_handler():	
 			self.register.save_data(self.user, self.password)
 			messagebox.showinfo("Info", "Usuario registrado correctamente")
-			CharacterChooser(self.window, self.user)
+			CharacterChooser(self.window, self.user, self.password)
 			
 		
 	def show_interface(self):

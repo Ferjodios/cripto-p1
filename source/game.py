@@ -103,9 +103,10 @@ class Game:
             self.window.destroy()
 
     def check_last_attack(self):
-        ataque = self.match_handler.get_atack_from_token_asimetrico(self.game_data, self.soy_jugador1).upper()
+        ataque = self.match_handler.get_attack_from_token_asimetrico(self.game_data, self.player_password, self.soy_jugador1).upper()
         self.game_data["cripto"]["key"] = ""
         self.game_data["cripto"]["token"] = ""
+        self.game_data["cripto_signature"]["signature"] = ""
         if ataque != "":
             tipo_ataque = self.enemy_data[ataque]["TIPO"]
             if tipo_ataque == "CURACION":

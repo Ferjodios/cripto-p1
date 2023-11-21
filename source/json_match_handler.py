@@ -4,6 +4,7 @@ from cryptography.fernet import Fernet
 from Crypto.Hash import SHA256
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_OAEP
+from Crypto.Signature import pkcs1_15
 
 class JsonMatchHandler:
     def __init__(self, file):
@@ -58,31 +59,56 @@ class JsonMatchHandler:
         return False
     
     def atacar_y_cambiar_turno(self, game, ataque, soy_jugador1, player_password):
-        game = self.encriptar_ataque_asimetrico(ataque, game, player_password)
+        game = self.encriptar_ataque(ataque, game, soy_jugador1)
         game = self.change_turn(game, soy_jugador1)
+        game = self.sign_attack(game, soy_jugador1, player_password)
         self.update_game(game, game["id_partida"])
         return game
+    
+    def sign_attack(self, game, soy_jugador1, player_password):
+        password_utf = player_password.encode('utf-8')
+        #Generar clave privada
+        hashed_password = SHA256.new(password_utf).digest()
+        passphrase_str = hashed_password.hex()
 
-    def encriptar_ataque(self, ataque, game):
+        #Dependiendo de si soy jugador 1 o 2, saco una clave privada u otra
+        if soy_jugador1:
+            pk_pem = game["cripto_signature"]["private_jugador1"]
+        else:
+            pk_pem = game["cripto_signature"]["private_jugador2"]
+
+        #Descifro la clave privada con la contraseña del usuario
+        private_key = RSA.import_key(pk_pem, passphrase=passphrase_str)
+        
+        token = bytes.fromhex(game["cripto"]["token"])
+        #Genero la firma con la clave pública
+        signature = pkcs1_15.new(private_key).sign(SHA256.new(token))
+        game["cripto_signature"]["signature"] = signature.hex()
+
+        return game
+
+    #Encripto el ataque de forma simétrica
+    def encriptar_ataque(self, ataque, game, soy_jugador1):
         key = Fernet.generate_key()
         f = Fernet(key)
         token = f.encrypt(ataque.encode('utf-8'))
 
         game["cripto"]["token"] = token.hex()
-        game["cripto"]["key"] = key.hex()
-        return game
-    
-    def encriptar_ataque_asimetrico(self, ataque, game, player_password):
-        password_utf = player_password.encode('utf-8')
-        #Generar clave privada
-        hashed_password = SHA256.new(password_utf).digest()
-        private_key = RSA.import_key(hashed_password)
+        return self.encriptar_key_asimetrico(key, game, soy_jugador1)
 
-        encryptor = PKCS1_OAEP.new(private_key)
-        game["cripto"]["token"] = encryptor.encrypt(ataque)
+    #encripto la key de forma asimétrica
+    def encriptar_key_asimetrico(self, key, game, soy_jugador1):
+        if soy_jugador1:
+            public_key_pem = game["cripto"]["public_jugador2"]
+        else:
+            public_key_pem = game["cripto"]["public_jugador1"]
+        
+        public_key = RSA.import_key(public_key_pem)
+        encryptor = PKCS1_OAEP.new(public_key)
+        encrypted_key = encryptor.encrypt(key)
+        game["cripto"]["key"] = encrypted_key.hex()
         return game
 
-    
     def change_turn(self, game, soy_jugador1):
         if soy_jugador1:
             game["datos_juego"]["turno"] = "Jugador 2"
@@ -90,25 +116,56 @@ class JsonMatchHandler:
             game["datos_juego"]["turno"] = "Jugador 1"
         return game
 
-    def get_atack_from_token(self, game):
-        if game["cripto"]["key"] != "":
-            key = bytes.fromhex(game["cripto"]["key"])
+    def get_attack_from_token(self, game, key):
+        if game["cripto"]["token"] != "":
+            #Descifro el ataque que esetaba cifrado de forma simétrica
             token = bytes.fromhex(game["cripto"]["token"])
             f = Fernet(key)
             return f.decrypt(token).decode('utf-8')
         else:
             return ""
-        
-    def get_atack_from_token_asimetrico(self, game, soy_jugador1):
-        #Tengo como atributo del handler la clave privada I think
-        if soy_jugador1:
-            public_key = game["cripto"]["public_jugador2"]
-        else:
-            public_key = game["cripto"]["public_jugador1"]
 
-        decryptor = PKCS1_OAEP.new(public_key)
-        return decryptor.decrypt(game["cripto"]["token"])
-    
+    def get_attack_from_token_asimetrico(self, game, player_password, soy_jugador1):
+        if game["cripto_signature"]["signature"] != "":
+            self.verify_attack(game, soy_jugador1)
+        if game["cripto"]["key"] != "":
+            password_utf = player_password.encode('utf-8')
+            #Generar clave privada
+            hashed_password = SHA256.new(password_utf).digest()
+            passphrase_str = hashed_password.hex()
+
+            #Dependiendo de si soy jugador 1 o 2, saco una clave privada u otra
+            if soy_jugador1:
+                pk_pem = game["cripto"]["private_jugador1"]
+            else:
+                pk_pem = game["cripto"]["private_jugador2"]
+
+            #Descifro la clave privada con la contraseña del usuario
+            private_key = RSA.import_key(pk_pem, passphrase=passphrase_str)
+
+            decryptor = PKCS1_OAEP.new(private_key)
+            #Desencripto con la privada la key para poder desencriptar el ataque
+            token_key = decryptor.decrypt(bytes.fromhex(game["cripto"]["key"]))
+            return self.get_attack_from_token(game, token_key)
+        else:
+            return ""
+        
+    def verify_attack(self, game, soy_jugador1):
+        if soy_jugador1:
+            public_key_pem = game["cripto"]["public_jugador2"]
+        else:
+            public_key_pem = game["cripto"]["public_jugador1"]
+        try:
+            public_key = RSA.import_key(public_key_pem)
+            token = bytes.fromhex(game["cripto"]["token"])
+            signature = bytes.fromhex(game["cripto_signature"]["signature"])
+            pkcs1_15.new(public_key).verify(SHA256.new(token), signature)
+            print("La firma coincide con el token.")
+            return True
+        except Exception as e:
+            #print(f"La firma no coincide con el token: {e}")
+            return False
+
     def delete_game(self, game_id):
         for partida in self.data:
             if partida["id_partida"] == game_id:

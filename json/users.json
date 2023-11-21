@@ -13,28 +13,16 @@
             "character": "VISHNU"
         },
         {
-            "user": "ferjo",
-            "password": "1fb83d75aa17b01983835491679752d1ef4e5576f8502fbab31f8114528ac452",
-            "salt": "56344dc83bfbc0818f4b902014f3492a",
-            "character": "THANATOS"
-        },
-        {
-            "user": "ferjodio",
-            "password": "0d1c646e825e64e45280d072a3381afde8371261e7ca84ea2da037132d1e7807",
-            "salt": "1c22708868c94737869ed97149364a44",
-            "character": "VISHNU"
-        },
-        {
-            "user": "ferjodios",
-            "password": "ee1ad9dbc7a2dac9fba91d1ed28932ee8187758260f9a8c2f43df893ed454a65",
-            "salt": "fd9b05310a37b51131547ca31dea2645",
+            "user": "Ferjodio",
+            "password": "306fc4c5a129e9988655f83ff4b7c6c64a47d0b60d8d4447d4e4c3b9c197424f",
+            "salt": "85e1cdea4c05e38aaa9a8a166f80c822",
             "character": "ZEUS"
         },
         {
-            "user": "ferjos",
-            "password": "4d1fcd2f1aa9230c6354bbcf8f896deb27eccc5f67cca34ddda5f1551f13319f",
-            "salt": "e2143c3f6dcdf740a7ed86d44ec898a4",
-            "character": "THANATOS"
+            "user": "Ferjo",
+            "password": "aeb7768772a4c9049e6031ca9af046b0b6dc1df350820b124a7d2940019bbe84",
+            "salt": "5618af347061a139d5cec400b07d96b3",
+            "character": "ZEUS"
         }
     ]
 }

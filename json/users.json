@@ -21,7 +21,31 @@
         {
             "user": "Ferjo",
             "password": "aeb7768772a4c9049e6031ca9af046b0b6dc1df350820b124a7d2940019bbe84",
-            "salt": "5618af347061a139d5cec400b07d96b3",
+            "salt": "5618af347mm061a139d5cec400b07d96b3",
+            "character": "ZEUS"
+        },
+        {
+            "user": "Wenas123@",
+            "password": "558c77beacd934936e6255191ac201405c8329e71a78344bcd793fd39586ee7b",
+            "salt": "a26011282c960caf8fbd14af638034be",
+            "character": "SUSANOO"
+        },
+        {
+            "user": "Anton12@",
+            "password": "00b4b9769794c66c799b89a7490e4f35d5ff25cb72a189111a96ed8b94b5b0c0",
+            "salt": "3422f6b5d5e8c5c2f97821aa28d7f750",
+            "character": "VISHNU"
+        },
+        {
+            "user": "Dav12@",
+            "password": "b11d2fe9b12424907d69071d7e6549d6b417924c42c54b7d0032ce3988d04aea",
+            "salt": "baeafcf9dfdd70dc0e40a92c3ee1e5a6",
+            "character": "INTI"
+        },
+        {
+            "user": "Dev12@",
+            "password": "98d4c08e41a954f0f4438322aad3fa7a9f980eae3cf06cf1164b6b67961f1862",
+            "salt": "b6dad379da06719e46b09746ffc72df0",
             "character": "ZEUS"
         }
     ]

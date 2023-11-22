@@ -1,0 +1,12 @@
+{
+    "security": [
+        {
+            "file": "json/users.json",
+            "hash": "2b24d4e4a345afcd5d92938aebddd4f576cf14c831eb6026ff7aa8bf008a8d78"
+        },
+        {
+            "file": "json/games.json",
+            "hash": "e3f59bbcc271c41c55a8f67f00247b1523351ef51613f14ad9398963ae7951fe"
+        }
+    ]
+}

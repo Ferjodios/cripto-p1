@@ -1,9 +1,13 @@
 import tkinter as tk
 from login import LogIn
 from signin import SignIn
+from json_user_handler import JsonUserHandler
 
 def main():
 	"""Funcion main del programa"""
+	# Verificar y actualizar los hashes al inicio
+	json_handler = JsonUserHandler()
+	json_handler.check_hashes()
 	root = tk.Tk()
 	root.title("Titanomachy")
 	root.geometry("500x500")

@@ -1,5 +1,6 @@
 import json
 import os
+from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
@@ -17,7 +18,58 @@ class JsonUserHandler:
 		# Guardar los datos en el archivo JSON
 		with open('json/users.json', 'w') as json_file:
 			json.dump(self.data, json_file, indent=4)
+		# Generar y guardar el hash en security.json
+		self.generate_and_save_hash('json/users.json')
 	
+	def generate_and_save_hash(self, filename):
+		"""Generar y guardar el hash del archivo en security.json"""
+		with open('json/security.json') as security_file:
+			security_data = json.load(security_file)
+
+		# Generar hash del archivo
+		with open(filename, 'rb') as file:
+			file_hash = hashes.Hash(hashes.SHA256(), backend=default_backend())
+			file_hash.update(file.read())
+			hash_value = file_hash.finalize().hex()
+
+		# Actualizar o agregar la entrada en security.json
+		found = False
+		for entry in security_data["security"]:
+			if entry["file"] == filename:
+				entry["hash"] = hash_value
+				found = True
+				break
+
+		if not found:
+			security_data["security"].append({"file": filename, "hash": hash_value})
+
+		# Guardar los cambios en security.json
+		with open('json/security.json', 'w') as security_file:
+			json.dump(security_data, security_file, indent=4)
+
+	def check_hashes(self):
+		"""Verifica y actualiza los hashes en security.json si hay cambios en los archivos"""
+		with open('json/security.json') as security_file:
+			security_data = json.load(security_file)
+
+		for entry in security_data["security"]:
+			filename = entry["file"]
+			stored_hash = entry["hash"]
+
+			try:
+				with open(filename, 'rb') as file:
+					file_hash = hashes.Hash(hashes.SHA256(), backend=default_backend())
+					file_hash.update(file.read())
+					current_hash = file_hash.finalize().hex()
+
+				if current_hash != stored_hash:
+				# Si el hash actual es diferente al almacenado, actualiza el hash
+					entry["hash"] = current_hash
+					print(f"Se ha detectado un cambio en {filename}.")
+			except (FileNotFoundError, json.decoder.JSONDecodeError):
+				print(f"Error al verificar {filename}. Puede que el archivo no exista o no sea un JSON válido.")
+
+
 	def hash_password(self, password, salt):
 		"""Funcion que aplica una funcion hash a la contraseña"""
 		password = password.encode()
@@ -41,7 +93,8 @@ class JsonUserHandler:
 		new_user = {"user": user, "password": password, "salt": salt_hex, "character": None}
 		self.data.setdefault("Client Register", []).append(new_user)
 		self.save()
-	
+
+
 	def save_character(self, my_user, my_character):
 		"""Funcion que guarda el personaje en el json"""
 		self.load_data()

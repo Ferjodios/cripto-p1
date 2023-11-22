@@ -5,6 +5,8 @@ from Crypto.Hash import SHA256
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_OAEP
 from Crypto.Signature import pkcs1_15
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import hashes
 
 class JsonMatchHandler:
     def __init__(self, file):
@@ -21,6 +23,34 @@ class JsonMatchHandler:
         # Guardar los datos en el archivo JSON
         with open(self.file, 'w') as json_file:
             json.dump(self.data, json_file, indent=4)
+        # Generar y guardar el hash en security.json
+        self.generate_and_save_hash('json/games.json')
+            
+    def generate_and_save_hash(self, filename):
+        """Generar y guardar el hash del archivo en security.json"""
+        with open('json/security.json') as security_file:
+            security_data = json.load(security_file)
+
+        # Generar hash del archivo
+        with open(filename, 'rb') as file:
+            file_hash = hashes.Hash(hashes.SHA256(), backend=default_backend())
+            file_hash.update(file.read())
+            hash_value = file_hash.finalize().hex()
+
+        # Actualizar o agregar la entrada en security.json
+        found = False
+        for entry in security_data["security"]:
+            if entry["file"] == filename:
+                entry["hash"] = hash_value
+                found = True
+                break
+
+        if not found:
+            security_data["security"].append({"file": filename, "hash": hash_value})
+
+        # Guardar los cambios en security.json
+        with open('json/security.json', 'w') as security_file:
+            json.dump(security_data, security_file, indent=4)
 
     def have_game_active(self, player_id):
         for partida in self.data:

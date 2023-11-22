@@ -17,6 +17,11 @@ Asegúrate de tener las siguientes bibliotecas instaladas antes de ejecutar el c
     pip install Pillow
     ```
 
+- **PyCryptodome**: Que es una biblioteca de criptografía en Python:
+	```
+	pip install pycryptodome
+	```
+
 ## Compatibilidad
 Este código ha sido probado y es compatible con las siguientes versiones de Python:
 

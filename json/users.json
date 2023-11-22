@@ -47,6 +47,12 @@
             "password": "98d4c08e41a954f0f4438322aad3fa7a9f980eae3cf06cf1164b6b67961f1862",
             "salt": "b6dad379da06719e46b09746ffc72df0",
             "character": "ZEUS"
+        },
+        {
+            "user": "ferjudio",
+            "password": "35538fb30d04dce05e5dbeea78b177c202a558d435009118f76565e282fcba5a",
+            "salt": "75a72bbee0a5a35d3848042d35e39be1",
+            "character": "SUSANOO"
         }
     ]
 }

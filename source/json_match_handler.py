@@ -7,6 +7,7 @@ from Crypto.Cipher import PKCS1_OAEP
 from Crypto.Signature import pkcs1_15
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
+from certification_manager import verify_certificate
 
 class JsonMatchHandler:
     def __init__(self, file):
@@ -96,10 +97,6 @@ class JsonMatchHandler:
         return game
     
     def sign_attack(self, game, soy_jugador1, player_password):
-        password_utf = player_password.encode('utf-8')
-        #Generar clave privada
-        hashed_password = SHA256.new(password_utf).digest()
-        passphrase_str = hashed_password.hex()
 
         #Dependiendo de si soy jugador 1 o 2, saco una clave privada u otra
         if soy_jugador1:
@@ -108,7 +105,7 @@ class JsonMatchHandler:
             pk_pem = game["cripto_signature"]["private_jugador2"]
 
         #Descifro la clave privada con la contraseña del usuario
-        private_key = RSA.import_key(pk_pem, passphrase=passphrase_str)
+        private_key = RSA.import_key(pk_pem, passphrase=player_password)
         
         token = bytes.fromhex(game["cripto"]["token"])
         #Genero la firma con la clave pública
@@ -159,10 +156,6 @@ class JsonMatchHandler:
         if game["cripto_signature"]["signature"] != "":
             self.verify_attack(game, soy_jugador1)
         if game["cripto"]["key"] != "":
-            password_utf = player_password.encode('utf-8')
-            #Generar clave privada
-            hashed_password = SHA256.new(password_utf).digest()
-            passphrase_str = hashed_password.hex()
 
             #Dependiendo de si soy jugador 1 o 2, saco una clave privada u otra
             if soy_jugador1:
@@ -171,7 +164,7 @@ class JsonMatchHandler:
                 pk_pem = game["cripto"]["private_jugador2"]
 
             #Descifro la clave privada con la contraseña del usuario
-            private_key = RSA.import_key(pk_pem, passphrase=passphrase_str)
+            private_key = RSA.import_key(pk_pem, passphrase=player_password)
 
             decryptor = PKCS1_OAEP.new(private_key)
             #Desencripto con la privada la key para poder desencriptar el ataque
@@ -182,18 +175,18 @@ class JsonMatchHandler:
         
     def verify_attack(self, game, soy_jugador1):
         if soy_jugador1:
-            public_key_pem = game["cripto"]["public_jugador2"]
+            public_key_pem = game["cripto_signature"]["public_jugador2"]
         else:
-            public_key_pem = game["cripto"]["public_jugador1"]
+            public_key_pem = game["cripto_signature"]["public_jugador1"]
         try:
             public_key = RSA.import_key(public_key_pem)
             token = bytes.fromhex(game["cripto"]["token"])
             signature = bytes.fromhex(game["cripto_signature"]["signature"])
             pkcs1_15.new(public_key).verify(SHA256.new(token), signature)
-            print("La firma coincide con el token.")
             return True
         except Exception as e:
-            #print(f"La firma no coincide con el token: {e}")
+            #Ver que hacer con la excepcion
+            print(f"La firma no coincide con el token: {e}")
             return False
 
     def delete_game(self, game_id):

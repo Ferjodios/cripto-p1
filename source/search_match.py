@@ -6,6 +6,7 @@ from json_character_handler import JsonCharacterHandler
 from Crypto.Hash import SHA256
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_OAEP
+from certification_manager import generate_certificate
 
 class SearchMatch:
     def __init__(self, parent, player_user, player_champ, player_password):
@@ -47,6 +48,7 @@ class SearchMatch:
             
     #Aquí tengo que cambiar el formato del json para tener las dos claves publicas como atributos en vez de key        
     def crear_partida(self):
+        self.set_keys_for_signature()
         new_game = {
             "id_partida": self.games.new_match_id(),
             "id_jugador1": self.player_user,
@@ -62,10 +64,14 @@ class SearchMatch:
             },
             "cripto_signature": {
                 "signature": "",
-                "private_jugador1": self.get_private_key_for_signature(),
+                "private_jugador1": self.private_key_for_signature,
                 "public_jugador1": self.public_key_for_signature,
                 "private_jugador2": "",
                 "public_jugador2": ""
+            },
+            "cripto_certificate": {
+                "certificate_jugador1": "",#generate_certificate(self.private_key_for_signature, "Jugador1"),
+                "certificate_jugador2": ""
             },
             "datos_juego": {
                 "personaje1": self.player_champ,
@@ -97,44 +103,34 @@ class SearchMatch:
             inactive_game["stats2"] = self.characterHandler.get_stats_by_name(self.player_champ)
             inactive_game["cripto"]["private_jugador2"] = self.get_private_key_for_attack()
             inactive_game["cripto"]["public_jugador2"] = self.public_key_for_attack
-            inactive_game["cripto_signature"]["private_jugador2"] = self.get_private_key_for_signature()
+            self.set_keys_for_signature()
+            inactive_game["cripto_signature"]["private_jugador2"] = self.private_key_for_signature
             inactive_game["cripto_signature"]["public_jugador2"] = self.public_key_for_signature
+            #inactive_game["cripto_certificate"]["certificate_jugador2"] = generate_certificate(self.private_key_for_signature, "Jugador2")
             self.games.update_game(inactive_game, inactive_game["id_partida"])
             messagebox.showinfo("Info", "Partida encontrada")
             Game(self.window, inactive_game, self.player_user, self.player_password)
     
     def get_private_key_for_attack(self):
-        #Generar con la contraseña del usuario una key para cifrar la clave priva
-        password = self.player_password.encode('utf-8')
-        hashed_password = SHA256.new(password).digest()
-        passphrase_str = hashed_password.hex()
-
         #Genero un par de claves aleatorias
         key_pair = RSA.generate(2048)
 
         #Cifro la clave privada con la contraseña del usuario, la clave cifrada es lo que voy a guardar en el json
-        private_key_der = key_pair.export_key(passphrase=passphrase_str, pkcs=8, protection="scryptAndAES128-CBC")
-        private_key = RSA.import_key(private_key_der, passphrase=passphrase_str)
+        private_key_der = key_pair.export_key(passphrase=self.player_password, pkcs=8, protection="scryptAndAES128-CBC")
         #Derivo la clave publica a partir de la privada
-        public_key = private_key.publickey()
+        public_key = key_pair.publickey()
         self.public_key_for_attack = public_key.export_key().decode('utf-8')
-        return private_key.export_key().decode('utf-8')
+        return private_key_der.decode('utf-8')
     
-    def get_private_key_for_signature(self):
-        #Generar con la contraseña del usuario una key para cifrar la clave priva
-        password = self.player_password.encode('utf-8')
-        hashed_password = SHA256.new(password).digest()
-        passphrase_str = hashed_password.hex()
-
+    def set_keys_for_signature(self):
         #Genero un par de claves aleatorias
         key_pair = RSA.generate(2048)
 
         #Cifro la clave privada con la contraseña del usuario, la clave cifrada es lo que voy a guardar en el json
-        private_key_der = key_pair.export_key(passphrase=passphrase_str, pkcs=8, protection="scryptAndAES128-CBC")
-        private_key = RSA.import_key(private_key_der, passphrase=passphrase_str)
+        private_key_der = key_pair.export_key(passphrase=self.player_password, pkcs=8, protection="scryptAndAES128-CBC")
         #Derivo la clave publica a partir de la privada
-        public_key = private_key.publickey()
+        public_key = key_pair.publickey()
         self.public_key_for_signature = public_key.export_key().decode('utf-8')
-        return private_key.export_key().decode('utf-8')
+        self.private_key_for_signature = private_key_der.decode('utf-8')
     
     

@@ -24,10 +24,10 @@ class LogIn:
 			if self.register.get_password_from_user(self.user) == self.register.hash_password(self.password, salt):
 				if self.register.get_character_from_user(self.user) == None:
 					messagebox.showinfo("Info", "Falta elegir personaje")
-					CharacterChooser(self.window, self.user, self.password)
+					CharacterChooser(self.window, self.user, self.register.get_password_from_user(self.user))
 				else:
 					messagebox.showinfo("Info", "Usuario logeado correctamente")
-					SearchMatch(self.window, self.user, self.register.get_character_from_user(self.user), self.password)
+					SearchMatch(self.window, self.user, self.register.get_character_from_user(self.user), self.register.get_password_from_user(self.user))
 			else:
 				messagebox.showerror("Error", "Contraseña incorrecta")
 		else:

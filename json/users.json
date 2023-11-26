@@ -13,18 +13,6 @@
             "character": "VISHNU"
         },
         {
-            "user": "Ferjodio",
-            "password": "306fc4c5a129e9988655f83ff4b7c6c64a47d0b60d8d4447d4e4c3b9c197424f",
-            "salt": "85e1cdea4c05e38aaa9a8a166f80c822",
-            "character": "ZEUS"
-        },
-        {
-            "user": "Ferjo",
-            "password": "aeb7768772a4c9049e6031ca9af046b0b6dc1df350820b124a7d2940019bbe84",
-            "salt": "5618af347mm061a139d5cec400b07d96b3",
-            "character": "ZEUS"
-        },
-        {
             "user": "Wenas123@",
             "password": "558c77beacd934936e6255191ac201405c8329e71a78344bcd793fd39586ee7b",
             "salt": "a26011282c960caf8fbd14af638034be",
@@ -49,9 +37,15 @@
             "character": "ZEUS"
         },
         {
-            "user": "ferjudio",
-            "password": "35538fb30d04dce05e5dbeea78b177c202a558d435009118f76565e282fcba5a",
-            "salt": "75a72bbee0a5a35d3848042d35e39be1",
+            "user": "Ferjo",
+            "password": "e4e172215d0ca74ea81d597d403a34fda2081834ba8d52c8b76930c4fa59b03e",
+            "salt": "ab4ab36c0ed7a39fd6dad6576f239ad2",
+            "character": "INTI"
+        },
+        {
+            "user": "Ferjodio",
+            "password": "0798b6dc8cf4b9e950e966e5dcffb0be50497de941a6b147574167d134ca5ee9",
+            "salt": "7d774682e7d647e2d21ce6440fce296e",
             "character": "SUSANOO"
         }
     ]

@@ -111,7 +111,7 @@ class JsonMatchHandler:
         #Genero la firma con la clave pública
         signature = pkcs1_15.new(private_key).sign(SHA256.new(token))
         game["cripto_signature"]["signature"] = signature.hex()
-
+        print("Se ha firmado el ataque")
         return game
 
     #Encripto el ataque de forma simétrica
@@ -183,6 +183,7 @@ class JsonMatchHandler:
             token = bytes.fromhex(game["cripto"]["token"])
             signature = bytes.fromhex(game["cripto_signature"]["signature"])
             pkcs1_15.new(public_key).verify(SHA256.new(token), signature)
+            print("La firma coincide con el token")
             return True
         except Exception as e:
             #Ver que hacer con la excepcion

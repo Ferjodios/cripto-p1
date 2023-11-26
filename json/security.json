@@ -2,11 +2,11 @@
     "security": [
         {
             "file": "json/users.json",
-            "hash": "391886996b285549027ab6f34600f7a27cd3aeafcdfbac9d13229e0de8af7352"
+            "hash": "1c1a469b113ee967df1cff0d6de0d30e98a34c824ae078c675193889c6dc332f"
         },
         {
             "file": "json/games.json",
-            "hash": "974367f6e010df63250756638233c684d529cce898475d33be847512a7f578ae"
+            "hash": "ec85eb246692e99f4c8642ff041ae1eadd81ab7e3a3c2cba7002d1967f2dae87"
         }
     ]
 }
